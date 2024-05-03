@@ -1,7 +1,29 @@
-
-
-# Function to fit SVM Linear Regression and evaluate accuracy
-
+#' ----------------------------------------------------------------------------------------------------------------------------------
+#' Fit Linear Support Vector Machine (SVM) Model and Evaluate Accuracy
+#' ----------------------------------------------------------------------------------------------------------------------------------
+#' 
+#' This function fits a Linear Support Vector Machine (SVM) model and evaluates its accuracy on both training and testing datasets.
+#' 
+#' @param data A dataframe containing the dataset.
+#' @param predictors A character vector specifying the predictor variables.
+#' @param response A character string specifying the response variable.
+#' @param top_k An integer specifying the number of top features to select. Default is NULL.
+#' 
+#' @return A list containing the fitted Linear SVM model, RMSE value on the training data, 
+#'         RMSE value on the test data, and the selected predictors.
+#' 
+#' @examples
+#' data <- read.csv("data.csv")
+#' predictors <- c("predictor1", "predictor2", "predictor3")
+#' response <- "response"
+#' fit_linear_svm(data, predictors, response)
+#' 
+#' @importFrom e1071 svm
+#' @importFrom stats predict
+#' @importFrom stats mean
+#' @importFrom stats sqrt
+#' @importFrom base cat
+#' @export
 fit_linear_svm <- function(data, predictors, response, top_k = NULL) {
 
   if (!require(e1071, quietly = TRUE)) {

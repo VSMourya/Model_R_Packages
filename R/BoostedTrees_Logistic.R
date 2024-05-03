@@ -1,5 +1,28 @@
+#' ---------------------------------------------------------------------------------------------------------------
+#' Fit Boosted Trees Logistic Regression Model
+#' ---------------------------------------------------------------------------------------------------------------
+#' 
+#' This function fits a Boosted Trees logistic regression model to the given dataset and evaluates its accuracy.
+#'
+#' @param data A dataframe containing the dataset.
+#' @param predictors A character vector specifying the predictor variables.
+#' @param response A character string specifying the binary response variable.
+#' @param top_k An integer specifying the number of top features to select (optional).
+#'
+#' @return A list containing the fitted model, accuracy on training data, accuracy on test data, and selected predictors.
+#'
+#' @examples
+#' data <- read.csv("data.csv")
+#' predictors <- c("predictor1", "predictor2", "predictor3")
+#' response <- "response"
+#' fit_boosted_trees_binary(data, predictors, response)
+#'
+#' @import xgboost
+#' @importFrom stats mean
+#' @importFrom base cat
+#'
+#' @export
 
-# Function to fit Boosted Trees Logistic Regression and evaluate accuracy
 fit_boosted_trees_binary <- function(data, predictors, response, top_k = NULL) {
   if (!require(xgboost, quietly = TRUE)) {
     install.packages("xgboost")

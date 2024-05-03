@@ -1,6 +1,26 @@
 
-# Function to fit Logistic Regression and evaluate accuracy
-
+#' ----------------------------------------------------------------------------------------------------------------------------------
+#' Fit Logistic Regression and Evaluate Accuracy
+#' ----------------------------------------------------------------------------------------------------------------------------------
+#' 
+#' This function fits a logistic regression model to the provided data and evaluates its accuracy on both training and testing datasets.
+#' 
+#' @param data The dataframe containing predictor and response variables.
+#' @param predictor The name of the predictor variable(s) in the dataframe.
+#' @param response The name of the response variable in the dataframe.
+#' @param top_k Optional. Number of top features to select for model training. Default is NULL.
+#'
+#' @return A list containing the fitted model, accuracy on test data, test predictions, and selected predictors (if top_k is specified).
+#' @export
+#'
+#' @examples
+#' fit_logistic_regression(data = my_data, predictor = "predictor_column", response = "response_column", top_k = 5)
+#'
+#' @importFrom dplyr select
+#' @importFrom stats glm predict
+#' @importFrom caret train_test_split
+#' @importFrom utils saveRDS
+#' 
 fit_logistic_regression <- function(data, predictor, response, top_k = NULL) {
 
   data <- na.omit(data)

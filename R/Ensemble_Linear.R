@@ -1,5 +1,27 @@
-
-# Ensemble Model for Linear Regression
+#' ---------------------------------------------------------------------------------------------------------------
+#' Ensemble Model for Linear Regression
+#' ---------------------------------------------------------------------------------------------------------------
+#' 
+#' This function implements ensemble learning for linear regression by combining predictions from multiple regression models.
+#'
+#' @param data A dataframe containing the dataset.
+#' @param predictors A character vector specifying the predictor variables.
+#' @param response A character string specifying the response variable.
+#' @param models A character vector specifying the types of regression models to include in the ensemble.
+#'
+#' @return A numeric vector containing the combined predictions from the ensemble model.
+#'
+#' @examples
+#' data <- read.csv("data.csv")
+#' predictors <- c("predictor1", "predictor2", "predictor3")
+#' response <- "response"
+#' models <- c("linear_regression", "ridge_regression", "lasso_regression")
+#' ensemble_learning(data, predictors, response, models)
+#'
+#' @importFrom stats predict
+#' @importFrom stats mean
+#' @importFrom base print
+#' @export
 
 ensemble_learning <- function(data, predictors, response, models) {
   predictions <- list()

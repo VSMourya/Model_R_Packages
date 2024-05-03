@@ -1,5 +1,26 @@
-
-# Function to fit Boosted Trees Linear Regression and evaluate accuracy
+#' ---------------------------------------------------------------------------------------------------------------
+#' Fit Boosted Trees Linear Regression Model
+#' --------------------------------------------------------------------------------------------------------------
+#' 
+#' This function fits a Boosted Trees linear regression model to the given dataset and evaluates its accuracy.
+#'
+#' @param data A dataframe containing the dataset.
+#' @param predictors A character vector specifying the predictor variables.
+#' @param response A character string specifying the response variable.
+#' @param top_k An integer specifying the number of top features to select (optional).
+#'
+#' @return A list containing the fitted model, RMSE on training data, RMSE on test data, and selected predictors.
+#'
+#' @examples
+#' data <- read.csv("data.csv")
+#' predictors <- c("predictor1", "predictor2", "predictor3")
+#' response <- "response"
+#' fit_boosted_trees(data, predictors, response)
+#'
+#' @import gbm
+#' @importFrom stats mean sqrt
+#' @importFrom base paste saveRDS
+#' @export
 
 fit_boosted_trees <- function(data, predictors, response, top_k = NULL) {
 

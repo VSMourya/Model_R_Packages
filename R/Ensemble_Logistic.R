@@ -1,5 +1,31 @@
-# Ensemble Model for Logistic Regression
+#' -----------------------------------------------------------------------------------------------------------------------------
+#' Ensemble Model for Logistic Regression
+#' -----------------------------------------------------------------------------------------------------------------------------
+#' 
+#' This function implements ensemble learning for logistic regression by combining predictions from multiple regression models.
+#' 
+#' @param data A dataframe containing the dataset.
+#' @param predictors A character vector specifying the predictor variables.
+#' @param response A character string specifying the response variable.
+#' @param models A character vector specifying the types of regression models to include in the ensemble.
+#' 
+#' @return A numeric vector containing the combined predicted classes from the ensemble model.
+#' 
+#' @examples
+#' data <- read.csv("data.csv")
+#' predictors <- c("predictor1", "predictor2", "predictor3")
+#' response <- "response"
+#' models <- c("logistic_regression", "ridge_regression", "lasso_regression")
+#' ensemble_learning_binary(data, predictors, response, models)
+#' 
+#' @importFrom stats predict
+#' @importFrom stats rowMeans
+#' @importFrom base print
+#' @export
+#' 
+
 ensemble_learning_binary <- function(data, predictors, response, models) {
+  
   predictions <- list()
 
   # Fit models and collect predictions

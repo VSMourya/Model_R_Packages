@@ -1,6 +1,31 @@
 
-# Function to fit Lasso Linear Regression and evaluate accuracy
-fit_linear_lasso_regression <- function(data, predictors, response, lambda = 1, top_k = NULL) {
+#' ---------------------------------------------------------------------------------------------------------------
+#' Function to fit Lasso Linear Regression and evaluate accuracy
+#' ---------------------------------------------------------------------------------------------------------------
+#' 
+#' This function fits a linear regression model using Lasso regularization and evaluates its accuracy on both training and testing datasets.
+#' 
+#' @param data A dataframe containing the dataset.
+#' @param predictors A character vector specifying the predictor variables.
+#' @param response A character string specifying the response variable.
+#' @param lambda A numeric value specifying the regularization parameter lambda. Default is 1.
+#' @param top_k An integer specifying the number of top features to select. Default is NULL.
+#' 
+#' @return A list containing the fitted Lasso linear regression model, R-squared on the training data, R-squared on the test data, and the selected predictors.
+#' 
+#' @examples
+#' data <- read.csv("data.csv")
+#' predictors <- c("predictor1", "predictor2", "predictor3")
+#' response <- "response"
+#' fit_linear_lasso_regression(data, predictors, response)
+#' 
+#' @importFrom glmnet glmnet
+#' @importFrom stats predict
+#' @importFrom stats print
+#' @importFrom base cat
+#' @export
+  
+  fit_linear_lasso_regression <- function(data, predictors, response, lambda = 1, top_k = NULL) {
 
   if (!require(glmnet, quietly = TRUE)) {
     install.packages("glmnet")

@@ -1,5 +1,30 @@
-
-# Function to fit Ridge Linear Regression and evaluate accuracy
+#' ----------------------------------------------------------------------------------------------------------------------------------
+#' Fit Ridge Linear Regression Model and Evaluate Accuracy
+#' ----------------------------------------------------------------------------------------------------------------------------------
+#' 
+#' This function fits a Ridge Linear Regression model and evaluates its accuracy on both training and testing datasets.
+#' 
+#' @param data A dataframe containing the dataset.
+#' @param predictors A character vector specifying the predictor variables.
+#' @param response A character string specifying the response variable.
+#' @param lambda A numeric value specifying the regularization parameter lambda, Default is 1.
+#' @param top_k An integer specifying the number of top features to select, Default is NULL.
+#' 
+#' @return A list containing the fitted Ridge Linear Regression model, R-squared value on the training data, 
+#'         R-squared value on the test data, and the selected predictors.
+#' 
+#' @examples
+#' data <- read.csv("data.csv")
+#' predictors <- c("predictor1", "predictor2", "predictor3")
+#' response <- "response"
+#' fit_linear_ridge_regression(data, predictors, response)
+#' 
+#' @importFrom glmnet glmnet
+#' @importFrom stats predict
+#' @importFrom stats sum
+#' @importFrom base cat
+#' @export
+#' 
 fit_linear_ridge_regression <- function(data, predictors, response, lambda = 1, top_k = NULL) {
 
   if (!require(glmnet, quietly = TRUE)) {

@@ -1,7 +1,37 @@
-
-# Function to fit Linear Regression and evaluate accuracy
-
-
+#' ----------------------------------------------------------------------------------------------------------------------------------
+#' Fit Linear Regression Model
+#' ----------------------------------------------------------------------------------------------------------------------------------
+#' 
+#' This function fits a linear regression model using the provided dataset and evaluates its accuracy.
+#' 
+#' @param data A dataframe containing the dataset.
+#' @param predictor A character vector specifying the predictor variables.
+#' @param response A character vector specifying the response variable.
+#' @param top_k An integer indicating the number of top features to select for modeling (default is NULL).
+#' 
+#' @return A list containing the fitted linear regression model, R-squared on test data, test predictions, and selected predictors.
+#' 
+#' @details
+#' The function performs the following steps:
+#' - Removes missing values from the dataset.
+#' - Checks if the input data is a dataframe and if the response variable exists in the dataframe.
+#' - If 'top_k' is specified, selects the top 'k' features using the 'select_top_features' function.
+#' - Splits the dataset into training and testing sets using the 'train_test_split' function.
+#' - Fits a linear regression model using the 'lm' function.
+#' - Saves the model as 'linear_regression.rds' in the present directory.
+#' - Calculates R-squared on both the training and testing data.
+#' 
+#' @examples
+#' fit_linear_regression(data = my_data, predictor = c("feature1", "feature2"), response = "target_variable", top_k = 5)
+#' 
+#' @importFrom stats lm predict summary
+#' @importFrom utils saveRDS
+#' @importFrom dplyr na.omit select
+#' @importFrom tidyr gather
+#' @importFrom caret trainTestSplit
+#' @export
+#' 
+#' 
 fit_linear_regression <- function(data, predictor, response, top_k = NULL) {
 
   data <- na.omit(data)

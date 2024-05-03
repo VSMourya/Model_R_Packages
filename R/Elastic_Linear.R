@@ -1,5 +1,34 @@
-# Function to fit Elastic net Linear Regression and evaluate accuracy
-
+#' ---------------------------------------------------------------------------------------------------------------
+#' Fit Elastic Net Linear Regression Model
+#' ---------------------------------------------------------------------------------------------------------------
+#' 
+#' This function fits an Elastic Net linear regression model to the given dataset and evaluates its accuracy.
+#'
+#' @param data A dataframe containing the dataset.
+#' @param predictors A character vector specifying the predictor variables.
+#' @param response A character string specifying the response variable.
+#' @param lambda A numeric value specifying the regularization parameter lambda (default: 1).
+#' @param top_k An integer specifying the number of top features to select (optional).
+#'
+#' @return A list containing the fitted model, R-squared on training data, R-squared on test data, and selected predictors.
+#'
+#' @examples
+#' data <- read.csv("data.csv")
+#' predictors <- c("predictor1", "predictor2", "predictor3")
+#' response <- "response"
+#' fit_linear_elastic_net(data, predictors, response)
+#'
+#' @import glmnet
+#' @importFrom base cat
+#' @importFrom base sum
+#' @importFrom base mean
+#' @importFrom base print
+#' @importFrom stats na.omit
+#' @importFrom stats is.data.frame
+#' @importFrom stats saveRDS
+#' @importFrom stats as.matrix
+#' @export
+#' 
 
 fit_linear_elastic_net <- function(data, predictors, response, lambda = 1, top_k = NULL) {
 

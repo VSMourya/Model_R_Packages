@@ -1,6 +1,28 @@
-
-# Function to fit Random Forest Logistic Regression and evaluate accuracy
-
+#' ----------------------------------------------------------------------------------------------------------------------------------
+#' Fit Random Forest Logistic Regression Model and Evaluate Accuracy
+#' ----------------------------------------------------------------------------------------------------------------------------------
+#' 
+#' This function fits a Random Forest model with logistic regression and evaluates its accuracy on both training and testing datasets.
+#' 
+#' @param data A dataframe containing the dataset.
+#' @param predictors A character vector specifying the predictor variables.
+#' @param response A character string specifying the response variable.
+#' @param top_k An integer specifying the number of top features to select. Default is NULL.
+#' 
+#' @return A list containing the fitted Random Forest model, accuracy on the training data, accuracy on the test data, and the selected predictors.
+#' 
+#' @examples
+#' data <- read.csv("data.csv")
+#' predictors <- c("predictor1", "predictor2", "predictor3")
+#' response <- "response"
+#' fit_random_forest_binary(data, predictors, response)
+#' 
+#' @importFrom randomForest randomForest
+#' @importFrom stats predict
+#' @importFrom stats mean
+#' @importFrom base cat
+#' @export
+#' 
 fit_random_forest_binary <- function(data, predictors, response, top_k = NULL) {
 
   if (!require(randomForest, quietly = TRUE)) {
